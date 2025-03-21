@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def setup_driver():
     options = Options()
-    #options.add_argument("--headless")  
+    options.add_argument("--headless")  
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     ua = UserAgent()
@@ -66,9 +66,8 @@ def save_to_csv(data):
     df = pd.concat([df, df_new], ignore_index=True)
     df.to_csv(file_name, index=False)
 
-def main():
+
+if __name__ == '__main__':
     products = scrape()
     if products:
         save_to_csv(products)
-if __name__ == '__main__':
-    main()
